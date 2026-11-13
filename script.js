@@ -262,6 +262,12 @@ crimeCategorias.forEach(cat => {
     lista.appendChild(item);
   });
 
+  // Abre e fecha a lista ao clicar no cabeçalho da categoria
+  header.onclick = () => {
+    header.classList.toggle("open");
+    lista.classList.toggle("hidden");
+  };
+
   bloco.appendChild(header);
   bloco.appendChild(lista);
   crimeContainer.appendChild(bloco);
@@ -276,39 +282,42 @@ function normalizarTexto(texto) {
 }
 
 // ===================== PESQUISA DE CRIMES =====================
-searchCrime.addEventListener("input", (e) => {
-  const termo = normalizarTexto(e.target.value.trim());
+if (searchCrime) {
+  searchCrime.addEventListener("input", (e) => {
+    const termo = normalizarTexto(e.target.value.trim());
 
-  document.querySelectorAll("#crimeContainer .crime-bloco").forEach(bloco => {
-    const header = bloco.querySelector(".crime-header");
-    const lista = bloco.querySelector(".crime-lista");
-    const itens = bloco.querySelectorAll(".crime-item");
+    document.querySelectorAll("#crimeContainer .crime-bloco").forEach(bloco => {
+      const header = bloco.querySelector(".crime-header");
+      const lista = bloco.querySelector(".crime-lista");
+      const itens = bloco.querySelectorAll(".crime-item");
 
-    let encontrou = false;
+      let encontrou = false;
 
-    itens.forEach(item => {
-      const texto = normalizarTexto(item.textContent);
-      if (texto.includes(termo)) {
-        item.style.display = "block";
-        encontrou = true;
+      itens.forEach(item => {
+        const texto = normalizarTexto(item.textContent);
+        if (texto.includes(termo)) {
+          item.style.display = "block";
+          encontrou = true;
+        } else {
+          item.style.display = "none";
+        }
+      });
+
+      if (termo === "") {
+        header.classList.remove("open");
+        lista.classList.add("hidden");
+        itens.forEach(i => i.style.display = "block");
+      } else if (encontrou) {
+        header.classList.add("open");
+        lista.classList.remove("hidden");
       } else {
-        item.style.display = "none";
+        header.classList.remove("open");
+        lista.classList.add("hidden");
       }
     });
-
-    if (termo === "") {
-      header.classList.remove("open");
-      lista.classList.add("hidden");
-      itens.forEach(i => i.style.display = "block");
-    } else if (encontrou) {
-      header.classList.add("open");
-      lista.classList.remove("hidden");
-    } else {
-      header.classList.remove("open");
-      lista.classList.add("hidden");
-    }
   });
-});
+}
+
 
 // ===================== ATENUANTES =====================
 const atenuantesBtns = [...document.querySelectorAll("#atenuantesBtns .crime-item")];

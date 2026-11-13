@@ -59,28 +59,40 @@ atualizarBO();
 
 // ===================== BASE COMPLETA DE CRIMES (EDITE AQUI) =====================
 // Preencha 'fianca' com o valor numérico (ex: 30000) ou false para "Não aplicável"
+// ===================== BASE COMPLETA DE CRIMES (ORIGINAL + CÓDIGO PENAL LOTUS GROUP) =====================
 const crimeCategorias = [
   {
     titulo: "Crimes contra a Vida",
     gravidade: "altissima",
     icone: "☠️",
     crimes: [
-      { artigo: "Art. 121 §2º", nome: "Homicídio Doloso Qualificado", meses: 180, multa: 5000, fianca: false },
-      { artigo: "Art. 121", nome: "Homicídio Doloso", meses: 120, multa: 4000, fianca: false },
-      { artigo: "Art. 121 c/c Art. 14", nome: "Tentativa de Homicídio", meses: 100, multa: 3000, fianca: 1500 },
-      { artigo: "Art. 121 §3º", nome: "Homicídio Culposo", meses: 60, multa: 2000, fianca: 1000 },
+      { artigo: "Art. 12", nome: "Homicídio Qualificado", meses: 70, multa: 60000, fianca: false },
+      { artigo: "Art. 11", nome: "Homicídio Doloso", meses: 50, multa: 40000, fianca: false },
+      { artigo: "Art. 09", nome: "Tentativa de Homicídio", meses: 40, multa: 30000, fianca: false },
+      { artigo: "Art. 10", nome: "Homicídio Culposo", meses: 20, multa: 20000, fianca: 40000 },
+      { artigo: "Art. 13", nome: "Latrocínio", meses: 80, multa: 70000, fianca: false },
       { artigo: "Art. 302 CTB", nome: "Homicídio Culposo no Trânsito", meses: 48, multa: 1500, fianca: 750 }
     ]
   },
   {
-    titulo: "Crimes Violentos",
+    titulo: "Crimes Violentos e Contra a Pessoa",
     gravidade: "alta",
     icone: "🔥",
     crimes: [
-      { artigo: "Art. 129", nome: "Lesão Corporal", meses: 24, multa: 1000, fianca: 500 },
+      { artigo: "Art. 26", nome: "Lesão Corporal", meses: 20, multa: 15000, fianca: 30000 },
       { artigo: "Art. 250", nome: "Incêndio", meses: 36, multa: 2000, fianca: 1000 },
-      { artigo: "Art. 159", nome: "Sequestro", meses: 120, multa: 5000, fianca: false },
-      { artigo: "Art. 148", nome: "Cárcere Privado", meses: 80, multa: 3000, fianca: 1500 }
+      { artigo: "Art. 27", nome: "Sequestro", meses: 45, multa: 40000, fianca: false },
+      { artigo: "Art. 148", nome: "Cárcere Privado", meses: 80, multa: 3000, fianca: 1500 },
+      { artigo: "Art. 28", nome: "Tortura", meses: 50, multa: 45000, fianca: false },
+      { artigo: "Art. 14", nome: "Assédio Moral", meses: 20, multa: 15000, fianca: 30000 },
+      { artigo: "Art. 15", nome: "Calúnia", meses: 15, multa: 10000, fianca: 20000 },
+      { artigo: "Art. 16", nome: "Difamação", meses: 15, multa: 10000, fianca: 20000 },
+      { artigo: "Art. 17", nome: "Injúria", meses: 15, multa: 10000, fianca: 20000 },
+      { artigo: "Art. 18", nome: "Importunação Sexual", meses: 35, multa: 30000, fianca: 60000 },
+      { artigo: "Art. 20", nome: "Abandono de Incapaz", meses: 20, multa: 15000, fianca: 30000 },
+      { artigo: "Art. 21", nome: "Adultério (Ilícito Civil)", meses: 0, multa: 5000, fianca: 10000 },
+      { artigo: "Art. 22", nome: "Bigamia", meses: 10, multa: 10000, fianca: 20000 },
+      { artigo: "Art. 23", nome: "Crime Sexual Intrafamiliar", meses: 60, multa: 50000, fianca: false }
     ]
   },
   {
@@ -99,40 +111,53 @@ const crimeCategorias = [
     gravidade: "media",
     icone: "💰",
     crimes: [
-      { artigo: "Art. 157", nome: "Roubo/Assalto", meses: 48, multa: 2500, fianca: 1250 },
-      { artigo: "Art. 155", nome: "Furto", meses: 24, multa: 1200, fianca: 600 },
+      { artigo: "Art. 34", nome: "Roubo", meses: 30, multa: 25000, fianca: 50000 },
+      { artigo: "Art. 33", nome: "Furto", meses: 15, multa: 10000, fianca: 20000 },
       { artigo: "Art. 155 §4º", nome: "Furto a Caixa Eletrônico", meses: 30, multa: 2000, fianca: 1000 },
-      { artigo: "Art. 158", nome: "Extorsão", meses: 72, multa: 3500, fianca: 1750 },
-      { artigo: "Art. 171", nome: "Estelionato", meses: 30, multa: 1500, fianca: 750 },
-      { artigo: "Art. 163", nome: "Dano ao Patrimônio Público", meses: 24, multa: 2000, fianca: 1000 },
-      { artigo: "Art. 150", nome: "Invasão de Imóvel", meses: 36, multa: 1800, fianca: 900 }
+      { artigo: "Art. 25", nome: "Extorsão", meses: 30, multa: 25000, fianca: 50000 },
+      { artigo: "Art. 31", nome: "Estelionato", meses: 25, multa: 20000, fianca: 40000 },
+      { artigo: "Art. 30", nome: "Dano de Propriedade do Governo", meses: 25, multa: 20000, fianca: 40000 },
+      { artigo: "Art. 29", nome: "Vandalismo", meses: 15, multa: 10000, fianca: 20000 },
+      { artigo: "Art. 32", nome: "Invasão de Propriedade / Imóvel", meses: 20, multa: 15000, fianca: 30000 }
     ]
   },
   {
-    titulo: "Porte, Posse e Tráfico de Armas",
+    titulo: "Porte, Posse, Tráfico de Armas e Equipamentos",
     gravidade: "media",
     icone: "🔫",
     crimes: [
-      { artigo: "Lei 10.826 Art.12", nome: "Posse de Peças de Armas", meses: 12, multa: 1000, fianca: 500 },
-      { artigo: "Lei 10.826 Art.13", nome: "Posse de Artefatos para Produção de Munição", meses: 18, multa: 1200, fianca: 600 },
+      { artigo: "Art. 37", nome: "Posse de Peças de Armas (Apreensão)", meses: 0, multa: 20000, fianca: false },
+      { artigo: "Art. 38", nome: "Posse de Cápsula (Apreensão)", meses: 0, multa: 15000, fianca: false },
+      { artigo: "Art. 39", nome: "Porte de Arma Leve", meses: 20, multa: 15000, fianca: 30000 },
+      { artigo: "Art. 40", nome: "Tráfico de Armas Leve (+3)", meses: 40, multa: 35000, fianca: false },
+      { artigo: "Art. 41", nome: "Porte de Arma Pesada", meses: 35, multa: 30000, fianca: false },
+      { artigo: "Art. 42", nome: "Tráfico de Armas Pesada (+3)", meses: 60, multa: 50000, fianca: false },
+      { artigo: "Art. 43", nome: "Porte de Arma Branca (Apreensão)", meses: 0, multa: 5000, fianca: false },
+      { artigo: "Art. 44", nome: "Porte de Munição (-100)", meses: 15, multa: 10000, fianca: 20000 },
+      { artigo: "Art. 45", nome: "Tráfico de Munição (+100)", meses: 30, multa: 25000, fianca: false },
       { artigo: "Lei 10.826 Art.12", nome: "Posse de Arma Ilegal", meses: 24, multa: 2000, fianca: 1000 },
-      { artigo: "Lei 10.826 Art.14", nome: "Porte de Arma Ilegal", meses: 36, multa: 3000, fianca: 1500 },
       { artigo: "Lei 10.826 Art.15", nome: "Disparo de Arma de Fogo", meses: 24, multa: 2000, fianca: 1000 },
-      { artigo: "Lei 10.826 Art.12", nome: "Posse de Munição (menos de 101)", meses: 12, multa: 800, fianca: 400 },
-      { artigo: "Lei 10.826 Art.18", nome: "Tráfico de Armas (mais de 3)", meses: 60, multa: 5000, fianca: false }
+      { artigo: "Art. 74", nome: "Uso de Coldre", meses: 10, multa: 10000, fianca: 20000 },
+      { artigo: "Art. 75", nome: "Uso de Colete (Roupa)", meses: 0, multa: 5000, fianca: false },
+      { artigo: "Art. 76", nome: "Porte de Colete Balístico (1 a 3)", meses: 15, multa: 15000, fianca: 30000 },
+      { artigo: "Art. 77", nome: "Tráfico de Colete Balístico (4 ou mais)", meses: 30, multa: 25000, fianca: false }
     ]
   },
   {
-    titulo: "Drogas / Narcotráfico",
+    titulo: "Drogas, Produtos Ilegais e Dinheiro Sujo",
     gravidade: "alta",
     icone: "💊",
     crimes: [
-      { artigo: "Lei 11.343 Art.28", nome: "Posse de Drogas (menos de 101)", meses: 12, multa: 1000, fianca: 500 },
-      { artigo: "Lei 11.343 Art.33", nome: "Tráfico de Drogas (mais de 100)", meses: 72, multa: 4000, fianca: false },
+      { artigo: "Art. 47", nome: "Posse de Drogas (-100)", meses: 20, multa: 15000, fianca: 30000 },
+      { artigo: "Art. 48", nome: "Tráfico de Drogas (+100)", meses: 40, multa: 35000, fianca: false },
       { artigo: "Lei 11.343 Art.33 §4º", nome: "Entrega de Drogas (aviãozinho)", meses: 48, multa: 2500, fianca: 1250 },
-      { artigo: "Lei 11.343 Art.34", nome: "Posse de Componentes Narcóticos", meses: 36, multa: 2000, fianca: 1000 },
+      { artigo: "Art. 46", nome: "Posse de Componentes Narcóticos (Apreensão)", meses: 0, multa: 15000, fianca: false },
       { artigo: "Lei 11.343 Art.35", nome: "Associação ao Tráfico", meses: 60, multa: 3500, fianca: false },
-      { artigo: "Lei 11.343 Art.36", nome: "Dinheiro Sujo", meses: 24, multa: 1800, fianca: 900 }
+      { artigo: "Art. 35", nome: "Posse de Produtos Ilegais (1 a 5)", meses: 20, multa: 15000, fianca: 30000 },
+      { artigo: "Art. 36", nome: "Tráfico de Produtos Ilegais (+6)", meses: 35, multa: 30000, fianca: false },
+      { artigo: "Art. 49", nome: "Dinheiro Sujo Leve (10k a 150k)", meses: 15, multa: 10000, fianca: 20000 },
+      { artigo: "Art. 50", nome: "Dinheiro Sujo Médio (150k a 500k)", meses: 25, multa: 20000, fianca: 40000 },
+      { artigo: "Art. 51", nome: "Dinheiro Sujo Grave (+500k)", meses: 40, multa: 35000, fianca: false }
     ]
   },
   {
@@ -140,49 +165,58 @@ const crimeCategorias = [
     gravidade: "baixa",
     icone: "⚠️",
     crimes: [
-      { artigo: "Art. 286", nome: "Apologia ao Crime", meses: 12, multa: 800, fianca: 400 },
-      { artigo: "Art. 333", nome: "Suborno", meses: 24, multa: 2000, fianca: 1000 },
-      { artigo: "Art. 147", nome: "Ameaça", meses: 18, multa: 1200, fianca: 600 },
-      { artigo: "Art. 340", nome: "Falsa Comunicação de Crime", meses: 12, multa: 800, fianca: 400 },
+      { artigo: "Art. 52", nome: "Apologia ao Crime", meses: 15, multa: 10000, fianca: 20000 },
+      { artigo: "Art. 64", nome: "Tentativa de Suborno", meses: 25, multa: 20000, fianca: false },
+      { artigo: "Art. 24", nome: "Ameaça", meses: 15, multa: 10000, fianca: 20000 },
+      { artigo: "Art. 57", nome: "Falsa Comunicação de Crime", meses: 15, multa: 10000, fianca: 20000 },
       { artigo: "Art. 265", nome: "Uso Indevido do 190/192", meses: 12, multa: 600, fianca: 300 },
-      { artigo: "Art. 330", nome: "Desobediência", meses: 12, multa: 700, fianca: 350 },
+      { artigo: "Art. 55", nome: "Desobediência", meses: 15, multa: 10000, fianca: 20000 },
       { artigo: "Art. 233", nome: "Atentado ao Pudor", meses: 18, multa: 1500, fianca: 750 },
-      { artigo: "Art. 150", nome: "Invasão de Propriedade", meses: 24, multa: 1400, fianca: 700 },
-      { artigo: "Art. 19 LCP", nome: "Uso de Máscara", meses: 12, multa: 500, fianca: 250 },
+      { artigo: "Art. 73", nome: "Ocultação Facial / Uso de Máscara", meses: 10, multa: 10000, fianca: 20000 },
       { artigo: "Lei 10.826", nome: "Uso de Equipamentos Restritos", meses: 12, multa: 1000, fianca: 500 },
-      { artigo: "Art. 19 LCP", nome: "Armas Brancas", meses: 12, multa: 700, fianca: 350 },
-      { artigo: "Art. 299", nome: "Falsidade Ideológica", meses: 12, multa: 900, fianca: 450 },
-      { artigo: "Art. 328", nome: "Exercício Ilegal da Profissão", meses: 15, multa: 3000, fianca: 1500 },
-      { artigo: "Art. 135", nome: "Omissão de Socorro", meses: 12, multa: 800, fianca: 400 }
+      { artigo: "Art. 53", nome: "Falsidade Ideológica", meses: 30, multa: 25000, fianca: 50000 },
+      { artigo: "Art. 56", nome: "Exercício Ilegal de Profissão", meses: 30, multa: 25000, fianca: 50000 },
+      { artigo: "Art. 60", nome: "Omissão de Socorro", meses: 15, multa: 10000, fianca: 20000 },
+      { artigo: "Art. 61", nome: "Perturbação da Ordem", meses: 10, multa: 5000, fianca: 10000 },
+      { artigo: "Art. 62", nome: "QRR Ilegal", meses: 25, multa: 20000, fianca: 40000 },
+      { artigo: "Art. 54", nome: "Formação de Quadrilha", meses: 25, multa: 20000, fianca: false }
     ]
   },
   {
-    titulo: "Crimes contra Autoridade (Sem Fiança)",
+    titulo: "Crimes contra Autoridade e Administração",
     gravidade: "alta",
     icone: "🛑",
     crimes: [
-      { artigo: "Art. 331", nome: "Desacato", meses: 36, multa: 2000, fianca: false },
+      { artigo: "Art. 03", nome: "Desacato", meses: 20, multa: 15000, fianca: 30000 },
       { artigo: "Art. 329", nome: "Resistência à Prisão", meses: 24, multa: 1500, fianca: false },
-      { artigo: "Art. 316", nome: "Abuso de Autoridade", meses: 36, multa: 2000, fianca: false },
-      { artigo: "Art. 319", nome: "Prevaricação", meses: 24, multa: 1800, fianca: false },
-      { artigo: "Art. 344", nome: "Obstrução da Justiça", meses: 36, multa: 2500, fianca: false },
-      { artigo: "Art. 317/333", nome: "Corrupção Ativa/Passiva", meses: 48, multa: 3000, fianca: false }
+      { artigo: "Art. 01", nome: "Abuso de Autoridade", meses: 30, multa: 30000, fianca: false },
+      { artigo: "Art. 05", nome: "Prevaricação", meses: 30, multa: 25000, fianca: 50000 },
+      { artigo: "Art. 58", nome: "Obstrução de Justiça", meses: 25, multa: 20000, fianca: 40000 },
+      { artigo: "Art. 02", nome: "Corrupção Passiva e/ou Ativa", meses: 40, multa: 50000, fianca: false },
+      { artigo: "Art. 04", nome: "Impedir Exercício Profissional", meses: 25, multa: 20000, fianca: 40000 },
+      { artigo: "Art. 06", nome: "Prisão Disciplinar", meses: 20, multa: 15000, fianca: false },
+      { artigo: "Art. 07", nome: "Tráfico de Influência", meses: 35, multa: 40000, fianca: 70000 },
+      { artigo: "Art. 08", nome: "Uso irregular de Função Pública", meses: 50, multa: 60000, fianca: false },
+      { artigo: "Art. 19", nome: "Perjúrio", meses: 25, multa: 20000, fianca: 40000 },
+      { artigo: "Art. 59", nome: "Ocultação de Provas", meses: 20, multa: 15000, fianca: 30000 },
+      { artigo: "Art. 80", nome: "Invasão a DP", meses: 50, multa: 50000, fianca: false }
     ]
   },
   {
-    titulo: "Crimes de Trânsito",
+        titulo: "Crimes de Trânsito",
     gravidade: "leve",
     icone: "🚦️",
     crimes: [
-      { artigo: "Art. 311 CTB", nome: "Tentativa de Fuga", meses: 12, multa: 800, fianca: 400 },
-      { artigo: "Art. 306 CTB", nome: "Condução Imprudente", meses: 12, multa: 700, fianca: 350 },
-      { artigo: "Art. 193 CTB", nome: "Dirigir na Contramão", meses: 12, multa: 700, fianca: 350 },
-      { artigo: "Art. 308 CTB", nome: "Alta Velocidade", meses: 12, multa: 1000, fianca: 500 },
-      { artigo: "Art. 228 CTB", nome: "Poluição Sonora", meses: 6, multa: 500, fianca: 250 },
-      { artigo: "Art. 230 CTB", nome: "Uso Excessivo de Insulfilm", meses: 6, multa: 500, fianca: 250 },
-      { artigo: "Art. 230 CTB", nome: "Veículo Muito Danificado", meses: 12, multa: 800, fianca: 400 },
-      { artigo: "Art. 230 CTB", nome: "Veículo Irregular", meses: 12, multa: 800, fianca: 400 },
-      { artigo: "Art. 181 CTB", nome: "Veículo Ilegalmente Estacionado", meses: 6, multa: 400, fianca: 200 },
+      { artigo: "Art. 63", nome: "Tentativa de Fuga", meses: 20, multa: 15000, fianca: 30000 },
+      { artigo: "Art. 66", nome: "Condução Imprudente", meses: 10, multa: 10000, fianca: 20000 },
+      { artigo: "Art. 67", nome: "Corridas Ilegais", meses: 20, multa: 15000, fianca: 30000 },
+      { artigo: "Art. 68", nome: "Dirigir na Contramão (Infração)", meses: 0, multa: 5000, fianca: false },
+      { artigo: "Art. 65", nome: "Alta Velocidade (Infração)", meses: 0, multa: 5000, fianca: false },
+      { artigo: "Art. 69", nome: "Poluição Sonora (Infração)", meses: 0, multa: 5000, fianca: false },
+      { artigo: "Art. 72", nome: "Uso Excessivo de Insulfilm (Infração)", meses: 0, multa: 5000, fianca: false },
+      { artigo: "Art. 70", nome: "Veículo Muito Danificado (Infração)", meses: 0, multa: 5000, fianca: false },
+      { artigo: "Art. 181 CTB", nome: "Veículo Irregular", meses: 12, multa: 800, fianca: 400 },
+      { artigo: "Art. 71", nome: "Veículo Ilegalmente Estacionado (Infração)", meses: 0, multa: 3000, fianca: false },
       { artigo: "Art. 302 CTB", nome: "Tentativa de Homicídio no Trânsito", meses: 72, multa: 3500, fianca: false }
     ]
   }

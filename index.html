@@ -1,140 +1,207 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Calculadora Penal – GTA RP</title>
-  <style>
-    body { font-family: Arial, sans-serif; background:#0f172a; color:#e5e7eb; padding:12px }
-@media(max-width:768px){ table,thead,tbody,tr,td,th{ display:block } th{ margin-top:10px } input,textarea,button{ font-size:16px } }
-    h1,h2,h3 { color:#38bdf8 }
-    .container { max-width:1000px; margin:auto; background:#020617; padding:20px; border-radius:10px }
-    table { width:100%; border-collapse:collapse; margin-bottom:15px }
-    th,td { border-bottom:1px solid #1e293b; padding:8px }
-    th { text-align:left }
-    input,textarea { width:100%; padding:6px; border-radius:6px; border:none; background:#020617; color:#e5e7eb }
-    input[type=checkbox]{ width:auto }
-    button { width:100%; padding:15px; background:#16a34a; border:none; border-radius:8px; color:white; font-size:16px; cursor:pointer }
-    .result { margin-top:20px; background:#020617; padding:15px; border-radius:8px }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistema Prisional GTA RP</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<h1>🚓 Calculadora Penal – GTA RP</h1>
 <div class="container">
 
-<h2>Identificação</h2>
-<table>
-<tr><th>Delegacia / Guarnição</th><td colspan="3"><input id="guarnicao" placeholder="Ex: DP Central / Bravo-02"></td></tr>
-</table>
-<table>
-<tr><th>Detido (Nome)</th><td><input id="detidoNome"></td><th>Passaporte</th><td><input id="detidoPass"></td></tr>
-<tr><th>Oficial Responsável</th><td><input id="oficialNome"></td><th>Passaporte</th><td><input id="oficialPass"></td></tr>
-<tr><th>Oficiais Envolvidos</th><td colspan="3"><textarea id="envolvidos" placeholder="Nome e passaporte separados por vírgula"></textarea></td></tr>
-<tr><th>Advogado</th><td><input id="advNome"></td><th>Passaporte</th><td><input id="advPass"></td></tr>
-</table>
+<h2 class="titulo-principal">⚖️ Sistema Prisional GTA RP ⚖️</h2>
 
-<h2>Crimes de Trânsito</h2>
-<table>
-<tr><th></th><th>Crime</th><th>Meses</th><th>Multa</th></tr>
-<tr><td><input type="checkbox" class="crime" data-meses="5" data-multa="5000"></td><td>Direção perigosa</td><td>5</td><td>$5.000</td></tr>
-<tr><td><input type="checkbox" class="crime" data-meses="3" data-multa="3000"></td><td>Excesso de velocidade</td><td>3</td><td>$3.000</td></tr>
-<tr><td><input type="checkbox" class="crime" data-meses="10" data-multa="10000"></td><td>Fuga de abordagem</td><td>10</td><td>$10.000</td></tr>
-<tr><td><input type="checkbox" class="crime" data-meses="10" data-multa="10000"></td><td>Avançar bloqueio policial</td><td>10</td><td>$10.000</td></tr>
-<tr><td><input type="checkbox" class="crime" data-meses="5" data-multa="5000"></td><td>Dirigir sem habilitação</td><td>5</td><td>$5.000</td></tr>
-<tr><td><input type="checkbox" class="crime" data-meses="2" data-multa="2000"></td><td>Veículo irregular</td><td>2</td><td>$2.000</td></tr>
-<tr><td><input type="checkbox" class="crime" data-meses="10" data-multa="10000"></td><td>Dano ao patrimônio público</td><td>10</td><td>$10.000</td></tr>
-</table>
+<!-- DADOS DO RÉU E OFICIAIS -->
+<div class="grid-topo">
 
-<h2>Crimes Contra a Ordem Pública</h2>
-<table>
-<tr><td><input type="checkbox" class="crime" data-meses="5" data-multa="5000"></td><td>Desacato</td><td>5</td><td>$5.000</td></tr>
-<tr><td><input type="checkbox" class="crime" data-meses="5" data-multa="5000"></td><td>Desobediência</td><td>5</td><td>$5.000</td></tr>
-<tr><td><input type="checkbox" class="crime" data-meses="10" data-multa="10000"></td><td>Resistência à prisão</td><td>10</td><td>$10.000</td></tr>
-<tr><td><input type="checkbox" class="crime" data-meses="10" data-multa="10000"></td><td>Ameaça</td><td>10</td><td>$10.000</td></tr>
-<tr><td><input type="checkbox" class="crime" data-meses="15" data-multa="20000"></td><td>Suborno</td><td>15</td><td>$20.000</td></tr>
-<tr><td><input type="checkbox" class="crime" data-meses="15" data-multa="20000"></td><td>Falso testemunho</td><td>15</td><td>$20.000</td></tr>
-<tr><td><input type="checkbox" class="crime" data-meses="20" data-multa="25000"></td><td>Obstrução da justiça</td><td>20</td><td>$25.000</td></tr>
-</table>
+  <!-- COLUNA ESQUERDA -->
+  <div class="coluna">
+    <div class="bloco hud-bloco reu-bloco">
+      <h2 class="center">😟 Dados do Réu</h2>
+      <input type="text" id="reuNome" placeholder="Nome do Réu">
+      <input type="text" id="reuPassaporte" placeholder="Passaporte do Réu"
+             maxlength="10" oninput="this.value=this.value.replace(/\D/g,'')">
+    </div>
 
-<h2>Crimes Contra o Patrimônio</h2>
-<table>
-<tr><td><input type="checkbox" class="crime" data-meses="10" data-multa="10000"></td><td>Furto</td><td>10</td><td>$10.000</td></tr>
-<tr><td><input type="checkbox" class="crime" data-meses="20" data-multa="20000"></td><td>Roubo</td><td>20</td><td>$20.000</td></tr>
-<tr><td><input type="checkbox" class="crime" data-meses="30" data-multa="30000"></td><td>Roubo qualificado</td><td>30</td><td>$30.000</td></tr>
-<tr><td><input type="checkbox" class="crime" data-meses="30" data-multa="35000"></td><td>Extorsão</td><td>30</td><td>$35.000</td></tr>
-<tr><td><input type="checkbox" class="crime" data-meses="15" data-multa="15000"></td><td>Receptação</td><td>15</td><td>$15.000</td></tr>
-<tr><td><input type="checkbox" class="crime" data-meses="20" data-multa="25000"></td><td>Estelionato</td><td>20</td><td>$25.000</td></tr>
-<tr><td><input type="checkbox" class="crime" data-meses="10" data-multa="10000"></td><td>Dano ao patrimônio</td><td>10</td><td>$10.000</td></tr>
-</table>
+    <div class="bloco hud-bloco">
+      <h2 class="center">💼 Advogado</h2>
+      <input type="text" id="advogadoNome" placeholder="Nome do Advogado" disabled>
+      <input type="text" id="advogadoPassaporte" placeholder="Passaporte do Advogado"
+             maxlength="10" oninput="this.value=this.value.replace(/\D/g,'')"
+             disabled>
+	  <h2 class="center">
+	</div>
+  </div>
 
-<h2>Armas, Drogas e Crimes Graves</h2>
-<table>
-<tr><td><input type="checkbox" class="crime" data-meses="20" data-multa="25000"></td><td>Porte ilegal de arma leve</td><td>20</td><td>$25.000</td></tr>
-<tr><td><input type="checkbox" class="crime" data-meses="40" data-multa="50000"></td><td>Porte ilegal de arma pesada</td><td>40</td><td>$50.000</td></tr>
-<tr><td><input type="checkbox" class="crime" data-meses="40" data-multa="50000"></td><td>Tráfico de drogas</td><td>40</td><td>$50.000</td></tr>
-<tr><td><input type="checkbox" class="crime" data-meses="60" data-multa="75000"></td><td>Associação criminosa</td><td>60</td><td>$75.000</td></tr>
-<tr><td><input type="checkbox" class="crime" data-meses="60" data-multa="100000"></td><td>Tentativa de homicídio</td><td>60</td><td>$100.000</td></tr>
-<tr><td><input type="checkbox" class="crime" data-meses="80" data-multa="150000"></td><td>Homicídio</td><td>80</td><td>$150.000</td></tr>
-</table>
+  <!-- COLUNA DIREITA -->
+  <div class="coluna">
+    <div class="bloco hud-bloco oficiais-bloco">
+      <h2 class="center">👮🏽‍️ Dados dos Oficiais</h2>
 
-<h2>Agravantes / Atenuantes</h2>
-<table>
-<tr><td><input type="checkbox" class="agravante" data-percent="25"></td><td>Reincidência (+25%)</td>
-<td><input type="checkbox" class="agravante" data-percent="20"></td><td>Fuga (+20%)</td></tr>
-<tr><td><input type="checkbox" class="atenuante" data-percent="15"></td><td>Réu primário (-15%)</td>
-<td><input type="checkbox" class="atenuante" data-percent="20"></td><td>Colaboração (-20%)</td></tr>
-</table>
+      <input type="text" id="oficialNome" placeholder="Oficial Responsável">
+      <input type="text" id="oficialPassaporte" placeholder="Passaporte do Oficial"
+             maxlength="10" oninput="this.value=this.value.replace(/\D/g,'')">
 
-<button onclick="calcular()">Calcular Pena</button>
-<button style="margin-top:10px;background:#2563eb" onclick="copiarRelatorio()">Copiar Relatório</button>
+      <select id="guarnicao">
+        <option value="PRF">PRF</option>
+        <option value="PMERJ">PMERJ</option>
+        <option value="CHOQUE">CHOQUE</option>
+        <option value="BOPE">BOPE</option>
+        <option value="PCERJ">PCERJ</option>
+        <option value="CORE">CORE</option>
+        <option value="EXERCITO">EXÉRCITO</option>
+      </select>
 
-<div class="result" id="resultado"></div>
+      <input type="text" id="boAuto" placeholder="B.O." readonly>
+
+      <textarea id="outrosOficiais"
+                placeholder="Oficiais Participantes"></textarea>
+    </div>
+
+    <div class="bloco hud-bloco">
+      <h2 class="center">👮🏼 Delegado ou Responsável</h2>
+      <input type="text" id="respNome" placeholder="Nome do Delegado" disabled>
+      <input type="text" id="respPassaporte" placeholder="Passaporte do Delegado"
+             maxlength="10" oninput="this.value=this.value.replace(/\D/g,'')"
+             disabled>
+    </div>
+  </div>
+
 </div>
 
-<script>
-function calcular(){
- let meses=0,multa=0,ag=0,at=0;
- const desc=document.getElementById('crimeDesc').value;
- const mExtra=Number(document.getElementById('crimeMeses').value||0);
- const fExtra=Number(document.getElementById('crimeMulta').value||0);
- if(desc){ meses+=mExtra; multa+=fExtra }
- document.querySelectorAll('.crime:checked').forEach(c=>{ meses+=+c.dataset.meses; multa+=+c.dataset.multa });
- document.querySelectorAll('.agravante:checked').forEach(a=>ag+=+a.dataset.percent);
- document.querySelectorAll('.atenuante:checked').forEach(a=>at+=+a.dataset.percent);
- let perc=ag-at;
- let mesesF=meses+(meses*perc/100);
- let multaF=multa+(multa*perc/100);
- // Sem limite máximo de pena
- const texto = `RELATÓRIO DE PRISÃO
 
-`+
- `GUARNIÇÃO / DELEGACIA: ${guarnicao.value}
+<!-- PESQUISA -->
+<div class="bloco hud-bloco">
+  <input type="text" id="searchCrime" placeholder="Pesquisar crime...">
+</div>
 
-`+ `RELATÓRIO DE PRISÃO
+<!-- CRIMES -->
+<div id="crimeContainer" class="crime-grid"></div>
 
-`+
- `DETIDO: ${detidoNome.value} | Passaporte: ${detidoPass.value}
-`+
- `PENA: ${Math.round(mesesF)} meses (cumpridos em minutos)
-`+
- `MULTA: $${multaF.toLocaleString('pt-BR')}
+<!-- AGRAVANTES / ATENUANTES -->
 
-`+
- `OFICIAL RESPONSÁVEL: ${oficialNome.value} | ${oficialPass.value}
-`+
- `OFICIAIS ENVOLVIDOS: ${envolvidos.value || 'N/A'}
-`+
- `ADVOGADO: ${advNome.value ? advNome.value+' | '+advPass.value : 'Não acionado'}
+<div class="grid-2">
 
-`+
- `O INDIVÍDUO FOI DEVIDAMENTE INFORMADO DE SEUS DIREITOS E CONDUZIDO PARA CUMPRIMENTO DA PENA CONFORME O CÓDIGO PENAL VIGENTE.`;
- document.getElementById('resultado').innerHTML=`<pre>${texto}</pre>`;
- window.relatorioFinal = texto;
-}
-function copiarRelatorio(){
- if(!window.relatorioFinal) return alert('Calcule a pena primeiro');
- navigator.clipboard.writeText(window.relatorioFinal);
- alert('Relatório copiado!');
-}
-</script>
+  <!-- AGRAVANTES -->
+  <div class="crime-bloco seletor">
+  <div class="crime-header agravante">
+    <span class="crime-icon">🔴</span>
+    Agravantes
+  </div>
+
+  <div class="crime-lista hidden">
+    <div id="agravantesBtns" class="crime-container">
+      <div class="crime-item" data-value="reincidente">🔁 Réu Reincidente</div>
+      <div class="crime-item" data-value="resistencia">✋ Resistência à Prisão</div>
+      <div class="crime-item" data-value="fuga">🏃 Tentativa de Fuga</div>
+      <div class="crime-item" data-value="desacato">🗣️ Desacato</div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ATENUANTES -->
+  <div class="crime-bloco seletor">
+  <div class="crime-header atenuante">
+    <span class="crime-icon">🟢</span>
+    Atenuantes
+  </div>
+
+  <div class="crime-lista hidden">
+    <div id="atenuantesBtns" class="crime-container">
+      <div class="crime-item" data-value="advogado">⚖️ Advogado constituído</div>
+      <div class="crime-item" data-value="reup">🆕 Réu Primário</div>
+      <div class="crime-item" data-value="confesso">✅ Réu Confesso</div>
+      <div class="crime-item" data-value="porte_legal">🔫 Porte de Arma Legal</div>
+      <div class="crime-item" data-value="delacao">🕵️ Delação Premiada</div>
+      <div class="crime-item" data-value="delegado">👮 Delegado Presente</div>
+      <div class="crime-item" data-value="colaboracao">🤝 Colaboração</div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+
+<!-- BOTÕES -->
+<div class="bloco hud-bloco actions">
+  <button id="calcularBtn" class="hud-btn">Calcular Penalidades</button>
+
+  <button id="resetCrimes" class="hud-btn danger">
+    Limpar Crimes
+  </button>
+
+  <button id="gerarRelatorio" class="hud-btn">
+    Gerar Relatório para Discord
+  </button>
+  <button id="sistemaTablet" class="hud-btn">
+    Sistema Tablet
+  </button>
+</div>
+
+<!--<div class="bloco hud-bloco" id="resumo"></div> -->
+
+
+<div class="tooltip" id="tooltip"></div>
+<!-- MODAL CHECKLIST -->
+<div id="checklistModal" class="modal hidden">
+  <div class="modal-content">
+
+    <h2 class="center">CHECKLIST DE PROCEDIMENTOS</h2>
+
+    <p class="modal-text">
+      Leia atentamente todos os itens obrigatórios para validação da prisão.<br>
+      O registro estará correto quando todos os requisitos abaixo estiverem selecionados.<br>
+      Selecionar o item confirma que o procedimento foi realizado conforme o
+      <strong>Checklist de Prisão</strong>.<br><br>
+      Itens que não se aplicam à ocorrência podem ser selecionados apenas para concluir a ação.
+    </p>
+
+    <div id="checklistItens" class="checklist-grid">
+
+		<div class="check-item">Lei de Miranda aplicada antes da delegacia</div>
+		<div class="check-item">Revista de sexo oposto feita com método da caixa</div>
+		<div class="check-item">Foto do inventário do Réu (RG aberto do Réu)</div>
+		<div class="check-item">Foto do porta-malas do veículo (Placa Veículo)</div>
+		<div class="check-item">Foto do rosto com RG aberto (tela inteira)</div>
+		<div class="check-item">Foto do corpo com RG aberto (uso de Coldre/Colete)</div>
+		<div class="check-item">Crime de ocultação facial (Foto com e sem Máscara)</div>
+		<div class="check-item">Verificado uso de coldre ou colete visível</div>
+		<div class="check-item">Relatório da ação com quantitativo de itens</div>
+		<div class="check-item">Todos os envolvidos marcados (policiais e jurídico)</div>
+
+	</div>
+
+
+    <div class="modal-actions">
+      <button id="confirmarChecklist" class="hud-btn">Confirmar e Copiar Relatório</button>
+      <button id="cancelarChecklist" class="hud-btn danger">Cancelar</button>
+    </div>
+
+  </div>
+</div>
+
+<div id="boletimModal" class="modal hidden">
+  <div class="modal-content boletim-modal">
+
+    <h2 class="center">🧾 BOLETIM DE CONFERÊNCIA PENAL</h2>
+
+    <div id="boletimConteudo"></div>
+
+    <div class="modal-actions">
+      <button id="fecharBoletim">Fechar</button>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="script.js"></script>
+</div>
+<footer>
+  Sistema Administrativo do Sistema Prisional — GTA RP
+</footer>
 </body>
 </html>

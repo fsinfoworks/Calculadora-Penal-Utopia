@@ -640,3 +640,9 @@ select[multiple] {
 #crimeContainer .crime-lista::-webkit-scrollbar-thumb:hover {
   background: rgba(42,117,243,0.5);
 }
+
+/* Garante que as listas com a classe hidden fiquem ocultas até serem clicadas */
+.crime-lista.hidden {
+  display: none !important;
+}
+

@@ -46,7 +46,7 @@ const boCounters = {
   PRF: 1, PMERJ: 1, CHOQUE: 1, BOPE: 1, PCERJ: 1, CORE: 1, EXERCITO: 1
 };
 const boPrefixo = {
-  PF:PF, PRF: "PRF", PMU: "PMU", CHOQUE: "CHQ", BOPE: "BOPE", PC: "PC", CORE: "CORE", EXERCITO: "EB", GATE: "GATE"
+  PF:"PF", PRF: "PRF", PMU: "PMU", CHOQUE: "CHQ", BOPE: "BOPE", PC: "PC", CORE: "CORE", EXERCITO: "EB", GATE: "GATE"
 };
 
 function atualizarBO() {
